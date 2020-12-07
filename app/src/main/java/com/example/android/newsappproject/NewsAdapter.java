@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,8 +22,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
     /**
      * Constructs a new {@link NewsAdapter}.
      *
-     * @param context     of the app
-     * @param news is the list of news, which is the data source of the adapter
+     * @param context of the app
+     * @param news    is the list of news, which is the data source of the adapter
      */
     public NewsAdapter(Context context, List<News> news) {
         super(context, 0, news);
@@ -66,34 +64,20 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Check whether the originalLocation string contains the " of " text
         if (originalTime.contains("T")) {
             // Split the string into different parts (as an array of Strings)
-            // based on the " of " text. We expect an array of 2 Strings, where
-            // the first String will be "5km N" and the second String will be "Cairo, Egypt".
             String[] parts = originalTime.split("T");
-            // Location offset should be "5km N " + " of " --> "5km N of"
-            time = parts[0];
 
+            time = parts[0];
         }
 
-        //Date dateObject = new Date(currentNews.getDate());
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.date);
-        // Format the date string (i.e. "Mar 3, 1984")
-        //String formattedDate = formatDate(dateObject);
+
         // Display the date of the current news in that TextView
         dateView.setText(time);
 
 
         // Return the list item view that is now showing the appropriate data
         return listItemView;
-    }
-
-
-    /**
-     * Return the formatted date string (i.e. "Mar 3, 1984") from a Date object.
-     */
-    private String formatDate(Date dateObject) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
-        return dateFormat.format(dateObject);
     }
 
 }

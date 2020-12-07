@@ -143,14 +143,11 @@ public class NewsActivity extends AppCompatActivity
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
-        Log.v("NewsActivity","URL before additions: " +uriBuilder);
-
         uriBuilder.appendQueryParameter("q", "technology");
         uriBuilder.appendQueryParameter("api-key", "test");
         uriBuilder.appendQueryParameter("from-date", "2019-01-01");
         uriBuilder.appendQueryParameter("limit", "10");
         uriBuilder.appendQueryParameter("order-by", "newest");
-
 
 
         return new NewsLoader(this, uriBuilder.toString());
